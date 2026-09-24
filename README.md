@@ -26,12 +26,17 @@ bundle install
 
 ## Запуск
 
+На Windows двічі натисніть `run_lab.cmd` у папці проєкту. Після завершення
+вікно залишається відкритим для перегляду результату. Залежності потрібно
+встановити один раз за інструкцією вище.
+
+Запуск із параметрами у PowerShell:
+
 ```powershell
-.\scripts\run.ps1 run
-.\scripts\run.ps1 run --limit 5 --pages 1 --threads 2
+.\run_lab.cmd --limit 5 --pages 1 --threads 2
 ```
 
-Або `bundle exec ruby main.rb`, `bundle exec rake run`; на Windows — `run_lab.cmd`.
+Альтернативні команди: `.\scripts\run.ps1 run`, `bundle exec ruby main.rb`, `bundle exec rake run`.
 Стандартний запуск: 20 товарів, 2 сторінки, 4 потоки, TXT/CSV/JSON/YAML, SQLite та ZIP.
 
 Параметри:
