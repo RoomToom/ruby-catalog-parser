@@ -1,0 +1,6 @@
+logging:
+  directory: logs
+  level: INFO
+  files:
+    application_log: application.log
+    error_log: error.log
