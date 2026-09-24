@@ -1,0 +1,17 @@
+/vendor/
+/.bundle/
+/tmp/
+/logs/*
+!/logs/.gitkeep
+/output/*
+!/output/.gitkeep
+/media/*
+!/media/.gitkeep
+/db/*
+!/db/.gitkeep
+/config/yaml_config/products/
+/.env
+/.env.*
+!/.env.example
+*.sqlite*
+/docs/

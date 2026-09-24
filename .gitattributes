@@ -1,0 +1,11 @@
+* text=auto
+*.rb text eol=lf
+*.rake text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+Gemfile text eol=lf
+Gemfile.lock text eol=lf
+Rakefile text eol=lf

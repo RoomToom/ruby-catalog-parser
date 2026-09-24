@@ -1,0 +1,27 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+  SuggestExtensions: false
+Layout/LineLength:
+  Max: 120
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+Metrics/CyclomaticComplexity:
+  Max: 9
+Metrics/MethodLength:
+  Max: 30
+Metrics/ClassLength:
+  Max: 260
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'lib/tasks/**/*'
+Metrics/AbcSize:
+  Max: 40
+Style/Documentation:
+  Enabled: false
