@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('run', 'test', 'lint', 'install', 'config', 'worker', 'smtp-check')]
+    [ValidateSet('run', 'desktop', 'test', 'lint', 'install', 'config', 'worker', 'smtp-check')]
     [string]$Task = 'run',
     [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$AppArgs
@@ -21,7 +21,7 @@ $env:RUBOCOP_CACHE_ROOT = Join-Path $projectRoot 'tmp/rubocop'
 Push-Location $projectRoot
 $previousSmtpEnvironment = @{}
 try {
-    if ($Task -in @('run', 'worker', 'smtp-check')) {
+    if ($Task -in @('run', 'desktop', 'worker', 'smtp-check')) {
         . (Join-Path $PSScriptRoot 'smtp_settings.ps1')
         $smtpEnvironment = Get-LabSmtpEnvironment (Join-Path $projectRoot '.smtp.local.xml')
         foreach ($key in $smtpEnvironment.Keys) {
@@ -30,8 +30,13 @@ try {
         }
     }
     switch ($Task) {
-        'install' { & bundle install }
+        'install' {
+            & bundle install
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            & (Join-Path $PSScriptRoot 'install_redis.ps1')
+        }
         'run' { & bundle exec ruby main.rb @AppArgs }
+        'desktop' { & bundle exec ruby scripts/desktop.rb @AppArgs }
         'test' { & bundle exec rake test }
         'lint' { & bundle exec rubocop @AppArgs }
         'config' { & bundle exec ruby main.rb --show-config }

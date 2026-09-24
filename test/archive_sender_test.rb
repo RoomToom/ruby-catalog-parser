@@ -23,6 +23,9 @@ class ArchiveSenderTest < LabTest
     assert_equal :smtp, received[:via]
     assert_equal 'test archive bytes', received[:attachments]['test.zip']
     assert_empty ArchiveSender.jobs
+    receipt = JSON.parse(File.read("#{archive}.sent.json"))
+    assert_equal 'student@example.test', receipt.fetch('recipient')
+    assert receipt.fetch('sent_at')
   end
 
   def test_sender_rejects_files_outside_archive_directory

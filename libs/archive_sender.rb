@@ -37,6 +37,7 @@ module MyApplicationTokarchuk
                 body: 'Результати збору каталогу додано до листа у ZIP-архіві.', via: :smtp,
                 via_options: smtp_options(settings), attachments: { File.basename(archive) => File.binread(archive) })
       LoggerManager.log_processed_file("Archive delivered: #{File.basename(archive)}")
+      File.write("#{archive}.sent.json", JSON.generate(recipient: recipient, sent_at: Time.now.utc.iso8601, jid: jid))
     rescue StandardError => e
       LoggerManager.log_error("ArchiveSender failed: #{e.class}")
       raise

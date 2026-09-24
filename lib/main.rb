@@ -6,7 +6,7 @@ require_relative '../libs/app_config_loader'
 
 module MyApplicationTokarchuk
   module CLI
-    def self.run(arguments = ARGV)
+    def self.run(arguments = ARGV, after_run: nil)
       AppConfigLoader.load_libs
       config = AppConfigLoader.config
       flags = {}
@@ -21,6 +21,7 @@ module MyApplicationTokarchuk
 
       configurator = Configurator.new(config).configure(flags)
       engine = Engine.run(configurator.config, config: config)
+      after_run&.call(engine)
       engine.result[:errors].empty? ? 0 : 2
     rescue StandardError => e
       warn "Помилка: #{e.class}: #{e.message}"
