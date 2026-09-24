@@ -1,0 +1,18 @@
+web_scraping:
+  start_page: https://scrapeme.live/shop/
+  product_link_selector: 'ul.products li.product a.woocommerce-LoopProduct-link'
+  product_name_selector: 'h1.product_title'
+  product_price_selector: '.summary p.price .woocommerce-Price-amount'
+  product_description_selector: '.woocommerce-product-details__short-description'
+  product_image_selector: '.woocommerce-product-gallery__image a'
+  product_category_selector: '.posted_in a'
+  product_sku_selector: '.sku'
+  next_page_selector: 'a.next.page-numbers'
+  currency: GBP
+  max_pages: 2
+  max_products: 20
+  threads: 4
+  request_interval: 0.5
+  timeout: 20
+  retries: 2
+  user_agent: 'TokarchukLabBot/1.0 (educational catalog study)'

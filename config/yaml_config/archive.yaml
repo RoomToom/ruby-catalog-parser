@@ -1,0 +1,14 @@
+archive:
+  directory: output/archives
+mail:
+  from: <%= ENV.fetch('SMTP_FROM', '').to_json %>
+  to: <%= ENV.fetch('ARCHIVE_EMAIL', '').to_json %>
+  subject: 'Tokarchuk Ruby Lab — catalog archive'
+  smtp_host: <%= ENV.fetch('SMTP_HOST', '127.0.0.1').to_json %>
+  smtp_port: <%= ENV.fetch('SMTP_PORT', '1025') %>
+  smtp_user: <%= ENV.fetch('SMTP_USER', '').to_json %>
+  smtp_password: <%= ENV.fetch('SMTP_PASSWORD', '').to_json %>
+  smtp_starttls: <%= ENV.fetch('SMTP_STARTTLS', 'false') %>
+  smtp_authentication: plain
+background:
+  redis_url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379/0').to_json %>

@@ -1,0 +1,10 @@
+execution:
+  run_website_parser: 1
+  run_save_to_file: 1
+  run_save_to_csv: 1
+  run_save_to_json: 1
+  run_save_to_yaml: 1
+  run_save_to_sqlite: 1
+  run_save_to_mongodb: 0
+  run_archive: 1
+  run_send_archive: 0

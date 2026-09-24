@@ -1,0 +1,11 @@
+database_config:
+  database_type: sqlite
+  sqlite_database:
+    db_file: db/local_database.sqlite
+    timeout: 5000
+    pool_size: 1
+  mongodb_database:
+    uri: <%= ENV.fetch('MONGODB_URI', 'mongodb://127.0.0.1:27017').to_json %>
+    db_name: tokarchuk_catalog
+    collection: products
+    timeout: 5
